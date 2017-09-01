@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Material Design Sign Up Form</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  
+
+
+
+      <link rel="stylesheet" href="cssreg/style.css">
+	   <link rel="stylesheet" href="cssreg/cssreg.css">
+
+  
+</head>
+
+<body>
+  <div ng-controller="DemoCtrl" ng-cloak="" class="md-inline-form" ng-app="MyApp" layout="column" layout-sm="row" layout-align="center center" layout-align-sm="start start" layout-fill>
+		<md-content id="SignupContent" class="md-whiteframe-10dp" flex-sm>
+				<md-toolbar flex id="materialToolbar">
+						<div class="md-toolbar-tools"> <span flex=""></span> <span class="md-headline" align="center">Material Design Sign Up Form</span> <span flex=""></span> </div>
+				</md-toolbar>
+				<div layout-padding="">
+						
+						<form name="userForm" method="POST" action="HospReg.jsp"  enctype="multipart/form-data">
+								<input type="hidden" name="action" value="signup" />
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Hospital name</label>
+												<input ng-model="user.hospitalname" name="a" required type="text" placeholder="Hospital name">
+												<div ng-if="userForm.a.$dirty" ng-messages="userForm.a.$error" role="alert">
+														<div ng-message="required" class="my-message">Hospital Name is Required.</div>
+														
+												</div>
+										</md-input-container>
+										
+								</div>
+                                                                <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Address</label>
+												<input ng-model="user.address" name="address" required type="text" ng-pattern="/^[a-zA-Z'. -]+$/" placeholder="Address">
+												<div ng-if="userForm.address.$dirty" ng-messages="userForm.address.$error" role="alert">
+														<div ng-message="required" class="my-message">Address is Required.</div>
+														
+												</div>
+										</md-input-container>
+										
+								</div>
+                                                                <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Country</label>
+												<input ng-model="user.country" name="country" required type="text" ng-pattern="/^[a-zA-Z'. -]+$/" placeholder="Country">
+												<div ng-if="userForm.country.$dirty" ng-messages="userForm.country.$error" role="alert">
+														<div ng-message="required" class="my-message">Address is Required.</div>
+														
+												</div>
+										</md-input-container>
+										
+								</div>
+                                                                <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>City</label>
+												<input ng-model="user.city" name="city" required type="text" ng-pattern="/^[a-zA-Z'. -]+$/" placeholder="City">
+												<div ng-if="userForm.city.$dirty" ng-messages="userForm.city.$error" role="alert">
+														<div ng-message="required" class="my-message">City is Required.</div>
+														
+												</div>
+										</md-input-container>
+										
+								</div>
+								<div layout="row" layout-sm="column">
+										<p style="font-size: 12px; margin-left: 3px; margin-top: 18px;">Status: </p>
+										<input type="hidden" name="status" value="{{user.status}}" />
+										<md-radio-group style="margin: 12px 0 19px;" ng-model="user.gender" required>
+												<md-radio-button value="Male" class="md-primary">Paid</md-radio-button>
+												<md-radio-button value="Female">Trial</md-radio-button>
+										</md-radio-group>
+										
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Email</label>
+												<input required type="email" name="email" ng-model="user.email" ng-pattern="/^[_a-z0-9-+]+(\.[_a-z0-9-+]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" placeholder="someone@example.com" />
+												<div ng-if="userForm.email.$dirty" ng-messages="userForm.email.$error" role="alert">
+														<div ng-message="required" class="my-message">Email Address is Required.</div>
+														<div ng-message="pattern" class="my-message">Enter Correct Email Address. </div>
+														<div ng-message="email" class="my-message">Enter Correct Email Address. </div>
+												</div>
+										</md-input-container>
+								</div>
+                                                                 <div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>Phone number</label>
+												<input ng-model="user.phoneno" name="phoneno" required type="number"  placeholder="Phone number">
+												<div ng-if="userForm.phoneno.$dirty" ng-messages="userForm.phoneno.$error" role="alert">
+														<div ng-message="required" class="my-message">Phone number is Required.</div>
+														
+												</div>
+										</md-input-container>
+										
+								</div>
+								<div layout="row" layout-sm="column">
+										<md-input-container flex-gt-sm="">
+												<label>New Password</label>
+												<input name="password" ng-model="user.password" type="password"  ng-pattern="" placeholder="********">
+												<div ng-if="userForm.password.$dirty" ng-messages="userForm.password.$error" role="alert" multiple>
+														<div ng-message="required">Password is Required.</div>
+																										</div>
+										</md-input-container>
+										<md-input-container flex-gt-sm="">
+												<label>Confirm Password</label>
+												<input name="confmPassword" ng-model="user.confmPassword" type="password" ng-pattern="" compare-to="user.password" placeholder="********">
+												<div ng-if="userForm.confmPassword.$dirty" ng-messages="userForm.confmPassword.$error" role="alert">
+														<div ng-message="required">Confirm Password is Required.</div>
+														<div ng-message="compareTo">Password Doesn't Match.</div>
+												</div>
+										</md-input-container>
+								</div>
+								<md-button class="md-raised md-primary" style="width:100%; margin: 0px 0px;" type="submit" name="submit">Submit</md-button>
+								
+						</form>
+				</div>
+		</md-content>
+</div>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-messages.min.js'></script>
+<script src='https://cdn.gitcdn.xyz/cdn/angular/bower-material/v1.0.0-rc3/angular-material.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+
+    <script src="jsreg/index.js"></script>
+
+</body>
+</html>
